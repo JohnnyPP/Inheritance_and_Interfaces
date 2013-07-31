@@ -6,13 +6,9 @@ using System.Threading.Tasks;
 
 namespace Inheritance_and_Interfaces
 {
-    class Animal
+    abstract class Animal
     {
-        public virtual void Speak()
-        {
-            Console.WriteLine("I can speak!");
-        }
-        
+        public abstract void Speak();
     }
 
     class Dog : Animal
@@ -21,10 +17,8 @@ namespace Inheritance_and_Interfaces
         {
             Console.WriteLine("Dog");
         }
-        
     }
-
-
+    
     class Pitbull : Dog
     {
         public override void Speak()
@@ -40,13 +34,14 @@ namespace Inheritance_and_Interfaces
             Console.WriteLine("Cat");
         }
     }
+
     class Program
     {
         static void Main(string[] args)
         {
             Console.WriteLine("Program started!");
 
-            Animal a = new Cat();
+            Animal a = new Dog();
             a.Speak();
 
             Console.ReadKey();
