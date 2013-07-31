@@ -6,32 +6,32 @@ using System.Threading.Tasks;
 
 namespace Inheritance_and_Interfaces
 {
-    abstract class Animal
+    interface IAnimal
     {
-        public abstract void Speak();
+        void Speak();
     }
 
-    class Dog : Animal
+    interface IHealth
     {
-        public override void Speak()
-        {
-            Console.WriteLine("Dog");
-        }
-    }
-    
-    class Pitbull : Dog
-    {
-        public override void Speak()
-        {
-            Console.WriteLine("Pitbull");
-        }
+        float Health { get; }
     }
 
-    class Cat : Animal
+    class LivingAnimal : IAnimal, IHealth
     {
-        public override void Speak()
+        public LivingAnimal(float health)
         {
-            Console.WriteLine("Cat");
+            Health = health;
+        }
+
+        public void Speak()
+        {
+            Console.WriteLine("I have {0} health.", Health);
+        }
+
+        public float Health
+        {
+            get;
+            private set;
         }
     }
 
@@ -41,7 +41,7 @@ namespace Inheritance_and_Interfaces
         {
             Console.WriteLine("Program started!");
 
-            Animal a = new Dog();
+            IAnimal a = new LivingAnimal(10.43f);
             a.Speak();
 
             Console.ReadKey();
